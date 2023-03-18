@@ -51,7 +51,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var shweNav : ImageButton
     lateinit var hider : LinearLayout
     private  var numCard =0
-     val ONESIGNAL_APP_ID = "01bfa2ef-0385-4c0b-bb0d-1eb283dcd6eb"
+     val ONESIGNAL_APP_ID = "ca-app-pub-8330627366418415~2016846524"
     lateinit var mAdView : AdView
     private var linkApp="https://t.me/confgat_egypt"
 

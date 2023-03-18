@@ -1,18 +1,20 @@
 package com.ramadan.eg.Adapter
 
 
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.green
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -30,10 +32,8 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
     RecyclerView.Adapter<CardAdapter.MVH>() {
 
     private lateinit var database: DatabaseReference
-   private lateinit var Stay: TextView
+    private lateinit var Stay: TextView
     private var rewardedAd: RewardedAd? = null
-
-fun x(){}
 
 
     companion object {
@@ -45,18 +45,20 @@ fun x(){}
         val Stay: TextView = view.findViewById(R.id.Stay)
         val logo: ImageView = view.findViewById(R.id.logo)
         val call: ImageView = view.findViewById(R.id.call)
+        val progressBar: ProgressBar = view.findViewById(R.id.ProgressBar)
         val unit: TextView = view.findViewById(R.id.unit)
         val text_col: TextView = view.findViewById(R.id.text_col)
         val watch: TextView = view.findViewById(R.id.watch)
         var contener_CardView: CardView = view.findViewById(R.id.contener_CardView)
         val constraintLayout: ConstraintLayout = view.findViewById(R.id.ConstraintLayout)
 
+
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MVH {
-        val view = activity.layoutInflater.inflate(R.layout.custom_list_item, parent, false)
         lodAds()
+        val view = activity.layoutInflater.inflate(R.layout.custom_list_item, parent, false)
         return MVH(view)
     }
 
@@ -64,6 +66,9 @@ fun x(){}
         holder.Stay.text = arrayCard.get(position).stay
         holder.watch.text = arrayCard.get(position).watch
         holder.unit.text = arrayCard.get(position).unit
+
+
+
 
         when (arrayCard.get(position).company) {
             "VODAFONE" -> {
@@ -79,22 +84,48 @@ fun x(){}
                 holder.logo.setImageResource(R.drawable.etisalat)
             }
         }
-        holder.call.setOnClickListener {chak(position)}
-        holder.text_col.setOnClickListener {chak(position)}
 
-
-
-
-
-
-
+            holder.call.setOnClickListener {
+                if (rewardedAd!=null) {
+                chak(position, holder)
+                holder.call.visibility = View.INVISIBLE
+                holder.progressBar.visibility = View.VISIBLE
+                holder.text_col.visibility = View.INVISIBLE
+                }
+                else{
+                    Toast.makeText(this.activity,"جاري تحميل الاعلان....",Toast.LENGTH_SHORT).show()
+                }
+            }
+            holder.text_col.setOnClickListener {
+                if (rewardedAd!=null) {
+                    chak(position, holder)
+                    holder.call.visibility = View.INVISIBLE
+                    holder.progressBar.visibility = View.VISIBLE
+                    holder.text_col.visibility = View.INVISIBLE
+                }
+                else{
+                    Toast.makeText(this.activity,"جاري تحميل الاعلان....",Toast.LENGTH_SHORT).show()
+                }
+            }
 
 
     }
 
     override fun getItemCount() = arrayCard.size
 
-    fun actionCall(position: Int) {
+
+    fun actionCall(position: Int, namCard: Int,holder:MVH) {
+
+        var auth: FirebaseAuth = Firebase.auth
+        val currentUser = auth.currentUser
+
+        val fruitsDB = Firebase.firestore
+        fruitsDB.collection("users").document(currentUser!!.uid)
+            .update("card", namCard - 1).addOnSuccessListener {
+                holder.call.visibility = View.VISIBLE
+                holder.progressBar.visibility = View.INVISIBLE
+                holder.text_col.visibility=View.VISIBLE
+            }
         card()
         up(position)
         val card = arrayCard[position]
@@ -103,21 +134,17 @@ fun x(){}
             "tel:${card.rechargeCardPrefix}${card.number.trim()}${Uri.encode(card.rechargeCardPostfix)}".toUri()
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
-        lodAds()
 
 
     }
 
 
-
-
-
-    fun up(position: Int){
+    fun up(position: Int) {
         val database = Firebase.database
         val myRef = database.getReference("card").child(arrayCard.get(position).key)
 
-        val watch = arrayCard.get(position).watch.toInt()+1
-        val stay = arrayCard.get(position).stay.toInt()-1
+        val watch = arrayCard.get(position).watch.toInt() + 1
+        val stay = arrayCard.get(position).stay.toInt() - 1
         val dataPost = hashMapOf(
             "key" to arrayCard.get(position).key,
             "number" to arrayCard.get(position).number,
@@ -134,7 +161,6 @@ fun x(){}
     }
 
 
-
     fun card() {
 
 
@@ -145,7 +171,6 @@ fun x(){}
             .get()
             .addOnSuccessListener { result ->
                 val document = result
-
 
 
                 val user = hashMapOf(
@@ -163,10 +188,12 @@ fun x(){}
     }
 
 
-    fun chak(position: Int){
-         var auth: FirebaseAuth
+    fun chak(position: Int,holder:MVH) {
+        var auth: FirebaseAuth
         val db = Firebase.firestore
         auth = Firebase.auth
+
+
 
         val currentUser = auth.currentUser
         db.collection("users")
@@ -174,23 +201,22 @@ fun x(){}
             .get()
             .addOnSuccessListener { result ->
                 val document = result
-               val namCard : Int =document.data?.get("card").toString().toInt()
+                val namCard: Int = document.data?.get("card").toString().toInt()
 
-                if (namCard>0){
-
-
-
-                    val fruitsDB = Firebase.firestore
-                    fruitsDB.collection("users").document(currentUser!!.uid)
-                        .update("card",namCard-1).addOnSuccessListener {
-                            onClik(position)
-                        }
+                if (namCard > 0) {
 
 
-                    onClik(position)
+                    onClik(position, namCard,holder)
 
-                }else if (namCard<=0){
-                 Toast.makeText(this.activity,"لقد قمت بشحن عدد الكروت اليومي المسموح لك",Toast.LENGTH_SHORT).show()
+                } else if (namCard <= 0) {
+                    Toast.makeText(
+                        this.activity,
+                        "لقد قمت بشحن عدد الكروت اليومي المسموح لك",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    holder.call.visibility = View.VISIBLE
+                    holder.progressBar.visibility = View.INVISIBLE
+                    holder.text_col.visibility=View.VISIBLE
                 }
 
             }
@@ -199,18 +225,14 @@ fun x(){}
     }
 
 
-
-
-
-
     // غند الضغط
-    fun onClik(position: Int){
+    fun onClik(position: Int, namCard: Int,holder:MVH) {
         rewardedAd?.let { ad ->
             ad.show(activity, OnUserEarnedRewardListener { rewardItem ->
                 // Handle the reward.
                 val rewardAmount = rewardItem.amount
                 val rewardType = rewardItem.type
-                actionCall(position)
+                actionCall(position, namCard,holder)
 
             })
         } ?: run {
@@ -224,7 +246,7 @@ fun x(){}
         var adRequest = AdRequest.Builder().build()
         RewardedAd.load(
             activity,
-            "ca-app-pub-8069852379280036/1520937364",
+            "ca-app-pub-8330627366418415/7574379242",
             adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -241,18 +263,18 @@ fun x(){}
     }
 
 
-
     fun ads2() {
-        rewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+        rewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdClicked() {
                 // Called when a click is recorded for an ad.
-                Toast.makeText(activity,"Ad was clicked.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad was clicked.", Toast.LENGTH_SHORT).show();
             }
 
             override fun onAdDismissedFullScreenContent() {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
-                Toast.makeText(activity, "Ad dismissed fullscreen content.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad dismissed fullscreen content.", Toast.LENGTH_SHORT)
+                    .show();
 
                 rewardedAd = null
                 lodAds()
@@ -260,29 +282,27 @@ fun x(){}
 
             override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                 // Called when ad fails to show.
-                Toast.makeText(activity,"Ad failed to show fullscreen content."
-                    ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    activity, "Ad failed to show fullscreen content.", Toast.LENGTH_SHORT
+                ).show();
 
                 rewardedAd = null
             }
 
             override fun onAdImpression() {
                 // Called when an impression is recorded for an ad.
-                Toast.makeText(activity,"Ad recorded an impression." ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad recorded an impression.", Toast.LENGTH_SHORT).show();
 
             }
 
             override fun onAdShowedFullScreenContent() {
                 // Called when ad is shown.
-                Toast.makeText(activity,"Ad showed fullscreen content." ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad showed fullscreen content.", Toast.LENGTH_SHORT)
+                    .show();
 
             }
         }
     }
-
-
-
-
 
 
 }
