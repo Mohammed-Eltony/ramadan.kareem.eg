@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/ic_account"
+        android:title="@string/account"
+        android:visible="false"
+        />
+
+
+    <item
+        android:id="@+id/Admin"
+        android:icon="@drawable/admin_24"
+        android:visible="false"
+        android:title="@string/admin" />
+
+    <item
+        android:id="@+id/AddCradet"
+        android:icon="@drawable/ic_add_card"
+        android:title="@string/add_cradet" />
+
+
+
+    <item
+        android:id="@+id/WhoAreWe"
+        android:icon="@drawable/error_outline"
+        android:title="@string/who_are_we" />
+
+    <item
+        android:id="@+id/sharing"
+        android:icon="@drawable/baseline_share_24"
+        android:title="@string/sharing" />
+
+
+
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logo_ut" />
+
+
+</menu>

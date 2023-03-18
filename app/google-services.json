@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "957593661971",
+    "firebase_url": "https://ramadan-kareem-eg-default-rtdb.firebaseio.com",
+    "project_id": "ramadan-kareem-eg",
+    "storage_bucket": "ramadan-kareem-eg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957593661971:android:89e850a35e5066d67185e6",
+        "android_client_info": {
+          "package_name": "com.ramadan.kareem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957593661971-k47ota1ccnr6f82mi76n4m539gtdq70q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ramadan.kareem",
+            "certificate_hash": "2b19815fbb30e8a611ae031de2c1f1c069509381"
+          }
+        },
+        {
+          "client_id": "957593661971-ejd58lk90s0r8m7sb7at28di2t61m8q3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDNPfsqQpViVtJdUtu0MyyiJjoflouOYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957593661971-ejd58lk90s0r8m7sb7at28di2t61m8q3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957593661971:android:3087de14a2ec603f7185e6",
+        "android_client_info": {
+          "package_name": "com.ramadan.kareem.eg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957593661971-ejd58lk90s0r8m7sb7at28di2t61m8q3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDNPfsqQpViVtJdUtu0MyyiJjoflouOYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957593661971-ejd58lk90s0r8m7sb7at28di2t61m8q3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

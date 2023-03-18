@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Aishhin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="sign_up">sign up</string>
+    <string name="sign_in">sign in</string>
+    <string name="sand">sand</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="i_have_an_account">I have an account ! </string>
+    <string name="create_an_account">Create an account</string>
+    <string name="log_in_to_my_account">Log in to my account</string>
+    <string name="a_link_to_change_the_password_has_been_sent">A link to change the password has been sent</string>
+    <string name="sign_out">sign out</string>
+    <string name="unit">unit: </string>
+    <string name="charge">Charge</string>
+
+    <string name="stay">stay: </string>
+    <string name="card_number">card number</string>
+    <string name="share">share</string>
+    <string name="promotion">Promotion</string>
+    <string name="enter_yor_emali">Enter Yor Emali</string>
+    <string name="data">Data</string>
+    <string name="this_number_of_visitors_today">This number of visitors today</string>
+    <string name="this_number_of_card_shipments">This number of card shipments</string>
+    <string name="unit_hint">unit</string>
+    <string name="stay_hint">stay</string>
+    <string name="drawe_Open">Open</string>
+    <string name="drawer_clos">Close</string>
+    <string name="Enabled_add_card">Enabled Card</string>
+    <string name="Disabled_add_card">Disabled Card</string>
+    <string name="Application_developers">Application developers</string>
+    <string name="Our_channel_on_Telegram">Our channel on Telegram</string>
+    <string name="Our_Facebook_channel">Our Facebook channel</string>
+    <string name="thanks_for_using_the_app">Thanks for using the app</string>
+    <string name="account">Account</string>
+    <string name="admin">Admin</string>
+    <string name="add_cradet">Add Cradet</string>
+    <string name="who_are_we">Who Are We</string>
+    <string name="logo_ut">Logo Ut</string>
+    <string name="the_application_is_under_maintenance">The application is under maintenance</string>
+    <string name="sharing">sharing</string>
+    <string name="ramadan_kareem">Ramadan Kareem</string>
+
+
+</resources>

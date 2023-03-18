@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">اشحن</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">البريد</string>
+    <string name="name">الاسم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="sign_up">تسجيل</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="sand">ارسال</string>
+    <string name="forgot_your_password">هل نسيت كلمة السر؟</string>
+    <string name="i_have_an_account">لدي حساب !</string>
+    <string name="create_an_account">انشاء حساب </string>
+    <string name="log_in_to_my_account">تسجيل الدخول الي حسابي</string>
+    <string name="a_link_to_change_the_password_has_been_sent">تم ارسال رابط تغيير الرقم السري</string>
+    <string name="sign_out">تسجيل خروج</string>
+    <string name="unit">وحدة: </string>
+
+    <string name="charge">شحن</string>
+    <string name="stay">المتبقي : </string>
+    <string name="card_number">رقم الكارت</string>
+    <string name="share">مشاركة</string>
+    <string name="promotion">الترقيه</string>
+    <string name="enter_yor_emali">ادخل البريد الكتروني</string>
+    <string name="data">البيانات</string>
+    <string name="this_number_of_visitors_today">عدد الزوار اليوم</string>
+    <string name="this_number_of_card_shipments">عدد الكروت المشحونة</string>
+    <string name="unit_hint">وحدات</string>
+    <string name="stay_hint">الشحنات</string>
+    <string name="drawe_Open">فتح</string>
+    <string name="drawer_clos">اغلاق</string>
+    <string name="Enabled_add_card">تفعيل اضافه كارت</string>
+    <string name="Disabled_add_card">الغاء اضافه كارت</string>
+    <string name="Application_developers">مطورين التطبيق</string>
+    <string name="Our_channel_on_Telegram">قناتنا علي تليجرام</string>
+    <string name="Our_Facebook_channel">صفحتنا علي فيسبوك</string>
+    <string name="thanks_for_using_the_app">شكرا علي استخدام التطبيق</string>
+    <string name="account">حسابي</string>
+    <string name="admin">ادمن</string>
+    <string name="add_cradet">اضافه كارت</string>
+    <string name="who_are_we">من نحن</string>
+    <string name="logo_ut">خروج</string>
+    <string name="the_application_is_under_maintenance">التطبيق تحت الصيانه</string>
+    <string name="sharing">مشاركة</string>
+    <string name="ramadan_kareem">رمضان كريم</string>
+
+
+</resources>

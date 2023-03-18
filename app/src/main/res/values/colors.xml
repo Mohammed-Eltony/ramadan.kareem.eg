@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="app">#3839af</color>
+    <color name="gold1">#fff2a6</color>
+    <color name="gold2">#ce8704</color>
+    <color name="bronze1">#ff781f</color>
+    <color name="bronze2">#3d190a</color>
+    <color name="silver1">#dfdddc</color>
+    <color name="silver2">#8a8680</color>
+    <color name="bronze1_Bc">#C66C30</color>
+    <color name="silver1_Bc">#C6C6C6</color>
+    <color name="gold1_bc">#f8c933</color>
+    <color name="color_app">#3839af</color>
+
+
+    <color name="AppPro" tools:ignore="ReferenceType">@drawable/background_bronze</color>
+    <color name="AppGold" tools:ignore="ReferenceType">@drawable/background_gold</color>
+    <color name="AppSilver" tools:ignore="ReferenceType">@drawable/background_silver</color>
+
+</resources>

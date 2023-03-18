@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AddCradetActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/card_number"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:hint="@string/card_number"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <EditText
+            android:id="@+id/number_of_shipments"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:hint="@string/stay_hint"
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@+id/unit"
+            app:layout_constraintTop_toTopOf="@+id/unit" />
+
+
+        <EditText
+            android:id="@+id/unit"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:hint="@string/unit_hint"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_number" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share"
+            android:background="@drawable/custom_button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/unit"
+            android:id="@+id/bottom_share"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/bottom_share"
+            app:layout_constraintStart_toEndOf="@id/bottom_share"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_share"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
