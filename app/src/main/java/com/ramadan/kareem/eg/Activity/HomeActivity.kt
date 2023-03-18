@@ -2,6 +2,7 @@ package com.ramadan.kareem.eg.Activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
@@ -107,6 +108,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val value = snapshot.value
                 if (value.toString()=="0"){
 
+                }else if (value.toString()=="1"){
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ramadan.kareem.eg&hl=ar&gl=US")
+                    startActivity(intent)
                 }else{
                     startActivity(Intent(homeActivity, UpdateActivity::class.java))
                     finish()
@@ -135,7 +140,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }
 
+
+        update(this)
+
+
+
+
     }
+
 
 
     private fun getData() {
