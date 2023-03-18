@@ -1,6 +1,5 @@
 package com.ramadan.eg.Adapter
 
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -10,11 +9,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.green
 import androidx.core.net.toUri
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -49,10 +44,6 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
         val unit: TextView = view.findViewById(R.id.unit)
         val text_col: TextView = view.findViewById(R.id.text_col)
         val watch: TextView = view.findViewById(R.id.watch)
-        var contener_CardView: CardView = view.findViewById(R.id.contener_CardView)
-        val constraintLayout: ConstraintLayout = view.findViewById(R.id.ConstraintLayout)
-
-
     }
 
 
@@ -116,7 +107,7 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
 
     fun actionCall(position: Int, namCard: Int,holder:MVH) {
 
-        var auth: FirebaseAuth = Firebase.auth
+        val auth: FirebaseAuth = Firebase.auth
         val currentUser = auth.currentUser
 
         val fruitsDB = Firebase.firestore
@@ -189,9 +180,8 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
 
 
     fun chak(position: Int,holder:MVH) {
-        var auth: FirebaseAuth
         val db = Firebase.firestore
-        auth = Firebase.auth
+        val auth: FirebaseAuth = Firebase.auth
 
 
 
@@ -231,7 +221,7 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
             ad.show(activity, OnUserEarnedRewardListener { rewardItem ->
                 // Handle the reward.
                 val rewardAmount = rewardItem.amount
-                val rewardType = rewardItem.type
+                rewardItem.type
                 actionCall(position, namCard,holder)
 
             })
@@ -243,7 +233,7 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
     fun lodAds() {
 
 
-        var adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder().build()
         RewardedAd.load(
             activity,
             "ca-app-pub-8330627366418415/7574379242",
@@ -267,14 +257,14 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
         rewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdClicked() {
                 // Called when a click is recorded for an ad.
-                Toast.makeText(activity, "Ad was clicked.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad was clicked.", Toast.LENGTH_SHORT).show()
             }
 
             override fun onAdDismissedFullScreenContent() {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
                 Toast.makeText(activity, "Ad dismissed fullscreen content.", Toast.LENGTH_SHORT)
-                    .show();
+                    .show()
 
                 rewardedAd = null
                 lodAds()
@@ -284,21 +274,21 @@ class CardAdapter(val activity: Activity, val arrayCard: ArrayList<CardData>) :
                 // Called when ad fails to show.
                 Toast.makeText(
                     activity, "Ad failed to show fullscreen content.", Toast.LENGTH_SHORT
-                ).show();
+                ).show()
 
                 rewardedAd = null
             }
 
             override fun onAdImpression() {
                 // Called when an impression is recorded for an ad.
-                Toast.makeText(activity, "Ad recorded an impression.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ad recorded an impression.", Toast.LENGTH_SHORT).show()
 
             }
 
             override fun onAdShowedFullScreenContent() {
                 // Called when ad is shown.
                 Toast.makeText(activity, "Ad showed fullscreen content.", Toast.LENGTH_SHORT)
-                    .show();
+                    .show()
 
             }
         }

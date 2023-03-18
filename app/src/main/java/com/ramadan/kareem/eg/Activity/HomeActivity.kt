@@ -28,11 +28,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.onesignal.OneSignal
-
 import com.ramadan.eg.Adapter.CardAdapter
 import com.ramadan.kareem.eg.Data.CardData
 import com.ramadan.kareem.eg.Data.DataUesr
-
 import com.ramadan.kareem.eg.R
 import com.ramadan.kareem.eg.UpdateActivity
 import java.text.SimpleDateFormat

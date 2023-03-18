@@ -68,6 +68,8 @@ class AddCradetActivity : AppCompatActivity() {
 
             if (card_number.text.isNotEmpty() && number_of_shipments.text.isNotEmpty() && unit.text.isNotEmpty()) {
                 myRef.setValue(dataPost)
+                Toast.makeText(this,"تم النشر",Toast.LENGTH_SHORT).show()
+
             } else {
                 if (card_number.text.isEmpty())
                     card_number.error = "انهو فارغ "
